@@ -1,1 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shrink Rate Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <h1>Shrink Rate Calculator</h1>
+      <p class="sub">For 3D printing, molding, casting, CNC scale compensation, and filament/material testing.</p>
 
+      <div class="grid">
+        <label>
+          Designed / target size
+          <input id="target" type="number" step="0.001" placeholder="ex: 100.00" />
+        </label>
+
+        <label>
+          Measured final size
+          <input id="measured" type="number" step="0.001" placeholder="ex: 99.35" />
+        </label>
+
+        <label>
+          Units
+          <select id="units">
+            <option>mm</option>
+            <option>in</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="buttons">
+        <button id="calc">Calculate</button>
+        <button id="clear" class="ghost">Clear</button>
+      </div>
+
+      <section class="results" aria-live="polite">
+        <div>
+          <span>Shrink amount</span>
+          <strong id="shrinkAmount">—</strong>
+        </div>
+        <div>
+          <span>Shrink rate</span>
+          <strong id="shrinkRate">—</strong>
+        </div>
+        <div>
+          <span>Scale factor to compensate</span>
+          <strong id="scaleFactor">—</strong>
+        </div>
+        <div>
+          <span>Scale percent</span>
+          <strong id="scalePercent">—</strong>
+        </div>
+      </section>
+
+      <hr />
+
+      <h2>Scale a new part</h2>
+      <div class="grid two">
+        <label>
+          New target size
+          <input id="newTarget" type="number" step="0.001" placeholder="ex: 250.00" />
+        </label>
+        <label>
+          Compensated model size
+          <input id="compensated" readonly placeholder="—" />
+        </label>
+      </div>
+
+      <p class="formula">
+        Shrink % = ((Target − Measured) ÷ Target) × 100<br />
+        Scale factor = Target ÷ Measured
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
